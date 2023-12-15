@@ -11,7 +11,7 @@ function useGetGifs ({ category }) {
     setLoading(true)
 
     fetchGifs({ category })
-      .then(({ data }) => {
+      .then((data) => {
         setImages((prevImages) => ({
           ...prevImages,
           [category]: data

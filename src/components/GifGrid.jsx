@@ -11,7 +11,7 @@ function GifGrid ({ handleDelete, category, images }) {
         </button>
       </div>
       <div className='sm:columns-2 lg:columns-3 gap-6 lg:gap-8'>
-        {images[category].map(({ id, title, images: { downsized_medium: { url } } }) => (
+        {images[category].map(({ id, title, url }) => (
           <GifItem
             key={id}
             url={url}

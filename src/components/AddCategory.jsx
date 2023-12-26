@@ -1,16 +1,17 @@
-import React from 'react'
-
-function AddCategory ({ setCategory }) {
+export function AddCategory ({ onNewCategory }) {
   const handleSubmit = (e) => {
-    const { value } = e.target.category
-    setCategory(value)
     e.preventDefault()
+    const { value } = e.target.category
+    if (value.trim().length <= 1) return
+    e.target.reset()
+    e.target.category.focus()
+    onNewCategory(value)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className='flex'>
-        <input className='flex-1 px-4' type='search' name='category' />
+        <input className='flex-1 px-4 border' type='search' name='category' />
         <button className='bg-gray-300 text-slate-700 px-3 py-2'>
           Buscar
         </button>
@@ -18,5 +19,3 @@ function AddCategory ({ setCategory }) {
     </form>
   )
 }
-
-export default AddCategory

@@ -1,4 +1,4 @@
-function GifItem ({ url, title }) {
+export function GifGridItem ({ url, title }) {
   return (
     <div className='w-full aspect-video mb-6 lg:mb-10 bg-gray-100 rounded  shadow-lg'>
       <img className='w-full' src={url} alt={title} />
@@ -8,5 +8,3 @@ function GifItem ({ url, title }) {
     </div>
   )
 }
-
-export default GifItem

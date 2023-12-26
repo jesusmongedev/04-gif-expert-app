@@ -2,20 +2,15 @@ import { useEffect, useState } from 'react'
 import { fetchGifs } from '@/services/fetchGifs'
 
 function useGetGifs ({ category }) {
-  const [images, setImages] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [images, setImages] = useState([])
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (category === '') return
-    setLoading(true)
-
+    // FIXME: 4. Avoid unnecesary complexity grouping data by category
     fetchGifs({ category })
       .then((data) => {
-        setImages((prevImages) => ({
-          ...prevImages,
-          [category]: data
-        }))
+        setImages(data)
         setLoading(false)
       })
       .catch((error) => {
@@ -28,8 +23,7 @@ function useGetGifs ({ category }) {
   return {
     images,
     loading,
-    error,
-    setImages
+    error
   }
 }
 

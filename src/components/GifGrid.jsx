@@ -1,18 +1,28 @@
 import deleteIcon from '@/assets/delete.svg'
-import GifItem from './GifItem'
+import { GifGridItem, GifGridItemSkeleton } from './'
+import useGetGifs from '@/hooks/useGetGifs'
 
-function GifGrid ({ handleDelete, category, images }) {
+export function GifGrid ({ handleDelete, category }) {
+  const { images, error, loading } = useGetGifs({ category })
+
   return (
     <div>
-      <div className='md:flex justify-between'>
-        <h3 className='text-center text-2xl font-bold mb-6 mt-10'>{category}</h3>
+      <div className='flex justify-between items-center space-x-4 md:space-x-8'>
+        <h3 className='text-xl md:text-2xl font-bold mb-6 mt-10 flex-1'>{category}</h3>
         <button onClick={() => handleDelete(category)}>
           <img src={deleteIcon} alt='Delete' />
         </button>
       </div>
+      {error && (
+        <div className='text-center'>
+          <p className='text-red-500 font-bold'>Error</p>
+          <p>{error.message}</p>
+        </div>
+      )}
       <div className='sm:columns-2 lg:columns-3 gap-6 lg:gap-8'>
-        {images[category].map(({ id, title, url }) => (
-          <GifItem
+        {loading && [1, 2, 3].map((n) => <GifGridItemSkeleton key={n} />)}
+        {images.map(({ id, title, url }) => (
+          <GifGridItem
             key={id}
             url={url}
             title={title}
@@ -22,5 +32,3 @@ function GifGrid ({ handleDelete, category, images }) {
     </div>
   )
 }
-
-export default GifGrid

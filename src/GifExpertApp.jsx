@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { AddCategory, GifGrid, NoCategories } from './components'
+import { useCategoriesStore } from './hooks/useCategoriesStore'
 
 function GifExpertApp () {
-  const [categories, setCategories] = useState([])
+  const { categories, setCategories } = useCategoriesStore()
 
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return

@@ -1,3 +1,6 @@
+import React from 'react'
+import Proptypes from 'prop-types'
+
 export function GifGridItem ({ url, title }) {
   return (
     <div className='w-full aspect-video mb-6 lg:mb-10 bg-gray-100 rounded  shadow-lg'>
@@ -7,4 +10,9 @@ export function GifGridItem ({ url, title }) {
       </div>
     </div>
   )
+}
+
+GifGridItem.propTypes = {
+  url: Proptypes.string.isRequired,
+  title: Proptypes.string.isRequired
 }

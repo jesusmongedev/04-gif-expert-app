@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for GifGridItem component component should Match Snapshot 1`] = `
+<div>
+  <div
+    class="w-full aspect-video mb-6 lg:mb-10 bg-gray-100 rounded  shadow-lg"
+  >
+    <img
+      alt="Brian Tracy"
+      class="w-full"
+      src="https://www.briantracy.com/blog/wp-content/uploads/2019/07/what-is-success.jpg"
+    />
+    <div
+      class="px-6 py-4"
+    >
+      <div
+        class="font-bold text-xl mb-2"
+      >
+        Brian Tracy
+      </div>
+    </div>
+  </div>
+</div>
+`;

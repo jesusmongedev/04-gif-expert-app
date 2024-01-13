@@ -1,11 +1,11 @@
-import { createGifAdapter } from '@/adapters/gifs.adapter'
-import { BASE_URL } from '@/constants/general'
-import axios from 'axios'
+import { createGifAdapter } from './../adapters/gifs.adapter'
+import { BASE_URL } from './../constants/general'
 
-export const fetchGifs = async ({ category }) => {
-  const url = `${BASE_URL}&q=${encodeURI(category)}`
+export const fetchGifs = async ({ category, limit = 10 }) => {
+  const url = `${BASE_URL}&q=${encodeURI(category)}&limit=${limit}`
 
-  const { data: { data: gifs = [] } } = await axios.get(url)
-  const adaptedGifs = gifs.map(gif => (createGifAdapter(gif)))
+  const resp = await fetch(url)
+  const { data } = await resp.json()
+  const adaptedGifs = data.map(gif => (createGifAdapter(gif)))
   return adaptedGifs
 }

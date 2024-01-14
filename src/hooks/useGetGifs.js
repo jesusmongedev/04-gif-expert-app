@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { fetchGifs } from '@/services/fetchGifs'
+import { fetchGifs } from './../services/fetchGifs'
 
 function useGetGifs ({ category }) {
   const [images, setImages] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -11,18 +11,18 @@ function useGetGifs ({ category }) {
     fetchGifs({ category })
       .then((data) => {
         setImages(data)
-        setLoading(false)
+        setIsLoading(false)
       })
       .catch((error) => {
         setError(error)
-        setLoading(false)
+        setIsLoading(false)
       })
   }
   , [category])
 
   return {
     images,
-    loading,
+    isLoading,
     error
   }
 }

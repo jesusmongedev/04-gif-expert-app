@@ -7,7 +7,6 @@ function useGetGifs ({ category }) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // FIXME: 4. Avoid unnecesary complexity grouping data by category
     fetchGifs({ category })
       .then((data) => {
         setImages(data)

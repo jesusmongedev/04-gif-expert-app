@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { AddCategory, GifGrid, NoCategories } from './components'
 
 function GifExpertApp () {
